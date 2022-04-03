@@ -1,5 +1,8 @@
 const express = require('express')
 
+const cors = require('cors')
+
+
 
 //crear en server la aplicacion de express
 class Server {
@@ -7,6 +10,7 @@ class Server {
     constructor(){
         this.app = express();
         this.port=process.env.PORT;
+        this.usuariosPath = '/api/usuarios';
 
         //middlewares son funciones que se ejecutaran en cuando carguemos
         this.middlewares();
@@ -16,14 +20,21 @@ class Server {
     };
 
     middlewares(){
+
+        //CORS
+        this.app.use(cors());
+
+        //Lectura y parseio del body
+        this.app.use(express.json());
+
+
         //directorio publico
         this.app.use(express.static('public'));
     }
 
     routes(){
-        this.app.get('/api',  (req, res)=> {
-            res.send('Hello World');
-          });
+        //cambio de path
+        this.app.use(this.usuariosPath,require('../routes/usuarios'));
     };
 
     listen(){
