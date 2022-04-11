@@ -39,7 +39,8 @@ const UsuarioSchema = Schema({
 });
 
 UsuarioSchema.methods.toJSON=function(){
-    const {__v,password,...usuario }= this.toObject();// se quitan password y __v y todo lo demas se guarda en usuario, aqui se modifina una funcion directamente
+    const {__v,password, _id,...usuario }= this.toObject();// se quitan password y __v y todo lo demas se guarda en usuario, aqui se modifina una funcion directamente
+    usuario.uid=_id;
     return usuario;
 }
 

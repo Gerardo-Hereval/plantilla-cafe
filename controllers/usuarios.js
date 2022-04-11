@@ -76,11 +76,13 @@ const usuariosGet=async (req=request, res=response)=> {
 
     const { id }=req.params;
 
+    const uid =req.uid;
+
     //fisicamente lo borramos, no se recomienda
 
     //const usuario = await Usuario.findByIdAndDelete(id);
     const usuario=await Usuario.findByIdAndUpdate(id,{estado:false})
-    res.json(usuario);
+    res.json({usuario,uid});
   };
 
 
