@@ -72,17 +72,17 @@ const usuariosGet=async (req=request, res=response)=> {
     });
   };
 
-  const usuariosDelete = async (req, res)=> {
+  const usuariosDelete = async (req, res=response)=> {
 
     const { id }=req.params;
 
-    const uid =req.uid;
+    
+    const usuario=await Usuario.findByIdAndUpdate(id,{estado:false});
+    
 
-    //fisicamente lo borramos, no se recomienda
 
-    //const usuario = await Usuario.findByIdAndDelete(id);
-    const usuario=await Usuario.findByIdAndUpdate(id,{estado:false})
-    res.json({usuario,uid});
+
+    res.json({usuario});
   };
 
 
