@@ -25,24 +25,24 @@ const usuariosGet=async (req=request, res=response)=> {
   });
   };
 
-  const usuariosPut = async (req, res=response)=> {
+const usuariosPut = async (req, res=response)=> {
     
-    const {id}= req.params;
-    const {_id,password,google,correo,...resto}=req.body;
+  const {id}= req.params;
+  const {_id,password,google,correo,...resto}=req.body;
 
     //TODO validar contra base de datos
-    if (password){
-          // encriptar la contraseña
-      const salt = bcryptjs.genSaltSync();//numero de vueltas de encriptacion por default son 10
-      resto.password=bcryptjs.hashSync(password,salt);
-    };
-
-    const usuario = await Usuario.findByIdAndUpdate(id,resto);
-    
-    res.json(usuario);
+  if (password){
+        // encriptar la contraseña
+    const salt = bcryptjs.genSaltSync();//numero de vueltas de encriptacion por default son 10
+    resto.password=bcryptjs.hashSync(password,salt);
   };
 
-  const usuariosPost =  async (req, res=response)=> {
+  const usuario = await Usuario.findByIdAndUpdate(id,resto);
+    
+  res.json(usuario);
+ };
+
+const usuariosPost =  async (req, res=response)=> {
 
     
 
@@ -63,16 +63,16 @@ const usuariosGet=async (req=request, res=response)=> {
     res.json({
         usuario
     });
-  };
+};
 
-  const usuariosPatch =   (req, res)=> {
+const usuariosPatch =   (req, res)=> {
     res.json({
         "ok":true,
         "msg": "patch API - controlador"
     });
-  };
+};
 
-  const usuariosDelete = async (req, res=response)=> {
+const usuariosDelete = async (req, res=response)=> {
 
     const { id }=req.params;
 
