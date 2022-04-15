@@ -12,8 +12,7 @@ const UsuarioSchema = Schema({
         unique:true
     },
     numero:{
-        type: Number,
-        required:[true, 'El numero es obligatorio'],
+        type: Number
     },
     password: {
         type: String,
