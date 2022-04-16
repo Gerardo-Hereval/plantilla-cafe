@@ -18,9 +18,9 @@ const obtenerCategorias = async (req,res=response)=>{
 
     res.json({
         categorias
-        })
+        });
 
-}
+};
 
 //obtenerCategoria -populate {}
 const obtenerCategoriaPorId = async(req,res=response)=>{
@@ -56,8 +56,8 @@ const crearCategoria = async(req,res=response)=>{
                 //guardar db
         
                 await categoria.save();
-                res.status(201).json(categoria)
-}
+                res.status(201).json(categoria);
+};
 
 //ModificarCategoria
 modificarCategoria = async (req,res=response)=>{
@@ -68,8 +68,8 @@ modificarCategoria = async (req,res=response)=>{
     data.usuario=req.usuario._id;
 
     const categoria = await Categoria.findByIdAndUpdate(id,data,{new: true});
-    res.status(200).json(categoria)
-}
+    res.status(200).json(categoria);
+};
 
 
 //borarCategoria -estado:false
@@ -79,8 +79,8 @@ borrarCategoria = async(req, res=response)=>{
 
     const categoria = await Categoria.findByIdAndUpdate(id,{estado:false},{new: true});
 
-    res.status(200).json({categoria})
-}
+    res.status(200).json(categoria);
+};
 
 
 
