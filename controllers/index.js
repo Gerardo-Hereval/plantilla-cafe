@@ -3,6 +3,7 @@ const Buscar=  require ('../controllers/buscar');
 const Categorias=  require ('../controllers/categorias');
 const Productos=  require ('../controllers/productos');
 const Usuarios=  require ('../controllers/usuarios');
+const Uploads= require ('../controllers/uploads');
 
 
 module.exports={
@@ -10,5 +11,6 @@ module.exports={
     Buscar,
     Categorias,
     Productos,
-    Usuarios
+    Usuarios,
+    Uploads
 }

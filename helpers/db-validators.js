@@ -38,6 +38,13 @@ const existeProductoPorId =async (id = '')=>{
     }
   }
 
+  const coleccionesPermitidas = (coleccion = '',colecciones = [])=>{
+    const incluida = colecciones.includes(coleccion);
+    if(!incluida){
+      throw new Error(`La coleccion: ${incluida}, no esta permitida, ${colecciones}`);
+    };
+    return true; //solo se pone aqui por la forma en la que se trabaja en routers
+  }
 
 
 
@@ -47,5 +54,6 @@ module.exports={
       emailExiste,
       existeUsuarioPorId,
       existeCategoriaPorId,
-      existeProductoPorId
+      existeProductoPorId,
+      coleccionesPermitidas
   }
